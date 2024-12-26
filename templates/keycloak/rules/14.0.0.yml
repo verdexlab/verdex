@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 14.0.0, < 17.0.0'
+
+http:
+  # themes/src/main/resources/theme/base/admin/resources/js/controllers/clients.js
+  - method: GET
+    path: '/auth/resources/{{resourcesIdLegacy}}/admin/base/js/controllers/clients.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/13.0.1...14.0.0#diff-300eb88a614fd516387b92f076a163f42ae286c087bb2293b8588e58665ba679
+      - type: word
+        part: body
+        word: "module.controller('ClientOidcKeyCtrl', function("
+
+      - type: status
+        status: 200

@@ -1,0 +1,11 @@
+info:
+  product: nextcloud
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/status.php'
+  part: body
+  regex: '"versionstring":"([0-9\.]+)"'
+  group: 1

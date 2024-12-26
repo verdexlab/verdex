@@ -1,0 +1,21 @@
+info:
+  product: keycloak
+
+version: '>= 12.0.0, < 17.0.0'
+
+service:
+  name: keycloak
+  port: 8080
+
+docker-compose:
+  services:
+    keycloak:
+      image: quay.io/keycloak/keycloak:{{.version}}
+      ports:
+        - 8080
+      healthcheck:
+        test: ["CMD-SHELL", "exec 3<>/dev/tcp/localhost/8080 && echo -e 'GET /auth/realms/master HTTP/1.1\\r\\nHost: localhost\\r\\nConnection: close\\r\\n\\r\\n' >&3 && cat <&3 | grep -q '200 OK'"]
+        start_period: 20s
+        interval: 5s
+        timeout: 5s
+        retries: 50

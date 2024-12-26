@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 15.0.0, < 17.0.0'
+
+http:
+  # themes/src/main/resources/theme/base/admin/resources/js/authz/authz-app.js
+  - method: GET
+    path: '/auth/resources/{{resourcesIdLegacy}}/admin/base/js/authz/authz-app.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/14.0.0...15.0.0#diff-de214b2860f87d9af0b82dca990d875c2d5560aa54e5a040e8b93f3a8fd76b8e
+      - type: word
+        part: body
+        word: "}).when('/realms/:realm/clients/:client/authz/resource-server/policy/regex/create', {"
+
+      - type: status
+        status: 200

@@ -1,0 +1,19 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 25.0.0'
+
+http:
+  # js/apps/admin-ui/maven-resources/theme/keycloak.v2/admin/messages/messages_en.properties
+  - method: GET
+    path: '/resources/master/admin/en'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        word: '{"key":"loa-condition-level","value":"Level of Authentication (LoA)"}'
+
+      - type: status
+        status: 200

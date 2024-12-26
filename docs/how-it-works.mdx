@@ -1,0 +1,34 @@
+---
+title: "How It Works"
+description: "Discover Verdex behind the scene"
+---
+
+## Genesis
+
+One of the greatest challenges in defensive cybersecurity is the detection of vulnerabilities on exposed services. 
+To achieve this, it is essential to determine the service version.
+
+Over time, and thanks to the best practices of system administrators, 
+fewer and fewer versions are publicly accessible (whether via server response headers or status endpoints).
+
+Since our goal as white hats is to continue alerting infrastructures hosting vulnerable services, 
+we need to detect versions in another way. Verdex was born.
+
+
+## How it works
+
+Verdex determines the features present on the target to efficiently deduce the likely versions.
+
+For example, if:
+
+* feature A was introduced with version 1
+
+* feature B was introduced with version 2
+
+and after several checks, the target has feature A but not feature B, Verdex concludes that product is running version 1.
+
+To give a concrete example, Keycloak has [introduced a new translation key](https://github.com/keycloak/keycloak/blob/436846bdf8e1dab4e9deb6c513d99fe8befdd107/js/apps/admin-ui/maven-resources/theme/keycloak.v2/admin/messages/messages_en.properties#L732) `bruteForceStrategy` in version `26.0.4`, which didn't exist before. If this translation key is detected on a Keycloak service, Verdex concludes that it is running at least version `26.0.4`.
+
+Verdex relies solely on **non-aggressive methods**, in particular by using mostly static assets (javascript, css and html files).
+
+Since this detection process is complex, feel free to [contribute to Verdex](/contribute) to improve templates.

@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 20.0.0, < 25.0.0'
+
+http:
+  # themes/src/main/resources/theme/keycloak.v2/account/resources/content.json
+  - method: GET
+    path: '/resources/{{resourcesId}}/account/keycloak.v2/content.json'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/19.0.3...20.0.0#diff-9c537bf1385d07707dfafd14c7c45e59bc15bdde04525898db9ebe5522fefec5
+      - type: word
+        part: body
+        word: '"modulePath": "/content/group-page/GroupsPage.js"'
+
+      - type: status
+        status: 200

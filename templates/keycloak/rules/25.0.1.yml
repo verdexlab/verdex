@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 25.0.1, < 26.0.7'
+
+http:
+  # themes/src/main/resources/theme/base/login/resources/js/authChecker.js
+  - method: GET
+    path: '/resources/{{resourcesId}}/login/resources/js/authChecker.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/25.0.0...25.0.1#diff-be4cdf723bb51182e034d88ba68c590cd6a116c74b6cfeec300edf53a8918ec9
+      - type: word
+        part: body
+        word: '// Remove the timeout when unloading to avoid execution of the'
+
+      - type: status
+        status: 200

@@ -1,0 +1,19 @@
+name: Build and Release Docker
+
+on:
+  schedule:
+  - cron: "30 1 * * *"
+
+jobs:
+  build-release-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t verdexlab/verdex .
+
+      - name: Push Docker image
+        run: |
+          # TODO

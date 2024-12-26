@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 23.0.5'
+
+http:
+  # js/apps/admin-ui/src/i18n/i18n.ts
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/{{reactMainName}}-{{reactAdminMainId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/23.0.6...23.0.7#diff-0874d3e16509f21b1b0a92f701507a473b4ea36cdd43efb05e1ad705e251b24c
+      - type: regex
+        part: body
+        regex: 'breadcrumb:\w+=>\w+\("createPolicy"\),handle:\{access:\w+=>\w+\.hasAny\("manage-clients","manage-authorization"\)\}'
+
+      - type: status
+        status: 200

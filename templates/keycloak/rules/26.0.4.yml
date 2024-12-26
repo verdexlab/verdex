@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 26.0.4'
+
+http:
+  # js/apps/admin-ui/maven-resources/theme/keycloak.v2/admin/messages/messages_en.properties
+  - method: GET
+    path: '/resources/master/admin/en'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/26.0.2...26.0.4#diff-c9ef637a710ad2a1ec0f86584796ce5fff7fa0c7a8702bcd020b29eef4e5af43
+      - type: word
+        part: body
+        word: '{"key":"bruteForceStrategy","value":"Strategy to increase wait time"}'
+
+      - type: status
+        status: 200

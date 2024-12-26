@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 15.0.2, < 17.0.0'
+
+http:
+  # themes/src/main/resources/theme/base/admin/resources/js/controllers/users.js
+  - method: GET
+    path: '/auth/resources/{{resourcesIdLegacy}}/admin/base/js/controllers/users.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/15.0.1...15.0.2#diff-7424dadaf52a36e7e592b009a32aa2cd22e6b11bdb55d9212501025a83a0f8c9
+      - type: word
+        part: body
+        word: '$location, $http, Dialog, Notifications, $translate, $route, Groups) {'
+
+      - type: status
+        status: 200

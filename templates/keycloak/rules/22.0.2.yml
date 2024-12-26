@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 22.0.2, < 23.0.0'
+
+http:
+  # js/apps/admin-ui/src/user/user-section.css
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/{{reactStyleName}}-{{reactAdminStyleId}}.css'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/22.0.1...22.0.2#diff-63590e200c414ef623b301d3d919451e1fc43b2411857808634397871605fcb9
+      - type: word
+        part: body
+        word: '.kc-join-group-modal-check{margin-right:var(--pf-global--spacer--sm)}.join-group-dialog-row-m-disabled{'
+
+      - type: status
+        status: 200

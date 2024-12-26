@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 21.1.1'
+
+http:
+  # js/apps/admin-ui/src/sessions/SessionsSection.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/SessionsSection-{{reactAdminSessionsSectionId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/21.1.0...21.1.1#diff-6b3d07959172ae611e7fad049d237f2af0754755267dbda6110aeba98a5ff1cb
+      - type: word
+        part: body
+        word: 'value:"REGULAR"'
+
+      - type: status
+        status: 200

@@ -1,0 +1,52 @@
+---
+title: Introduction
+---
+
+<Frame>
+  <img src="/images/screenshot.png" />
+</Frame>
+
+Welcome to **Verdex**, a fast, collaborative, and open-source tool designed to 
+**detect online service versions through feature-based analysis**,
+even when traditional versioning information is unavailable.
+
+One of the biggest challenges in defensive cybersecurity is identifying vulnerabilities in exposed services, 
+which requires accurately determining the service version.
+
+Instead of relying on exposed headers, Verdex quickly analyzes the features present on a service. 
+For example, **if a feature was introduced in a specific version, Verdex uses this information to deduce the 
+minimum version of the service** (see [How It Works](/how-it-works) for more information).
+
+<Note>
+  🪶 Verdex relies solely on **non-aggressive methods**, in particular by using mostly static assets (javascript, css and html files).
+</Note>
+
+Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](/essentials/products)).
+
+## Essentials
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="wand-magic-sparkles" href="/quickstart">
+    Learn how to run first Verdex detections in seconds.
+  </Card>
+
+  <Card title="Products" icon="crosshairs-simple" href="/essentials/products">
+    Explore the services supported by Verdex and vote for the next ones.
+  </Card>
+
+  <Card title="Detection Options" icon="wrench" href="/essentials/options">
+    Learn about the available Verdex options to optimize your scans.
+  </Card>
+
+  <Card title="Output Formats" icon="right-from-bracket" href="/essentials/output">
+    Learn about the different output formats that Verdex supports.
+  </Card>
+</CardGroup>
+
+## Make it yours
+
+<CardGroup cols={2}>
+  <Card title="Contribute" icon="lightbulb" href="/contribute/introduction">
+    How to contribute to Verdex by improving detections or reporting issues.
+  </Card>
+</CardGroup>

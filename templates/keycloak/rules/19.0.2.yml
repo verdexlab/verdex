@@ -1,0 +1,19 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 19.0.2, < 21.0.0'
+
+http:
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/js/services.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/19.0.1...19.0.2#diff-76cf0b9f3623f8f9a1180e925984c101042e5e88163b53029aa68ba411071769
+      - type: word
+        part: body
+        word: 'query.callback({ results: response.map(function (client) {'
+
+      - type: status
+        status: 200

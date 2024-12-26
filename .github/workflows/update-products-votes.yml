@@ -1,0 +1,29 @@
+name: Update Products Votes
+
+on:
+  schedule:
+  - cron: "30 1 * * *"
+
+jobs:
+  update-products-votes:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.8
+
+      - name: Update Products Votes
+        run: python3 scripts/update-products-votes.py
+
+      - name: Git Commit & Push
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "[auto] Updated products votes on documentation"
+          git push

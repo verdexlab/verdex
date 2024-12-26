@@ -1,0 +1,18 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 23.0.0'
+
+http:
+  - method: GET
+    path: '/resources/{{resourcesId}}/common/keycloak/vendor/react/react.production.min.js'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        word: '@license React'
+
+      - type: status
+        status: 200

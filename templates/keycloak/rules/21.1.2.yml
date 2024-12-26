@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 21.1.2'
+
+http:
+  # services/src/main/resources/org/keycloak/protocol/oidc/endpoints/login-status-iframe.html
+  - method: GET
+    path: '/realms/master/protocol/openid-connect/login-status-iframe.html'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/21.1.1...21.1.2#diff-f12075aa197c7fca5a8a74ed3693d38946cb3884c4d3ef374f19cf2da49b6966
+      - type: word
+        part: body
+        word: '// Filter out any events that do not match the expected format of a 2-part string split by a space.'
+
+      - type: status
+        status: 200

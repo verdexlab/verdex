@@ -1,0 +1,32 @@
+---
+title: 'Tests'
+description: 'Learn about rules testing in Verdex'
+icon: 'vial'
+iconType: 'duotone'
+---
+
+After adding new rules, variables or products, test Verdex detection against several Docker containers running different versions:
+
+```bash
+go run . -test -product keycloak
+```
+
+To test a specific version, use:
+
+```bash
+go run . -test -product keycloak -test-version 26.0.4 -verbose
+```
+
+To test a specific range, use [semver syntax](https://github.com/Masterminds/semver):
+
+```bash
+go run . -test -product keycloak -test-version 26.x -verbose
+```
+
+To start a test session (live detection) on specific version, use:
+
+```bash
+go run . -test -product keycloak -test-version 26.0.4 -test-session -verbose
+# eg: keycloak 23.0.2 ⠙ at http://localhost:58943 | [d]etect or [s]top
+# --> press "d" (to run detection) or "s" (to stop session), then return
+```

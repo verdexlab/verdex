@@ -1,0 +1,59 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "Verdex",
+  "logo": "/logo.svg",
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#0D9373",
+    "light": "#07C983",
+    "dark": "#0D9373",
+    "anchors": {
+      "from": "#0D9373",
+      "to": "#07C983"
+    }
+  },
+  "topbarLinks": [
+    {
+      "name": "Get Started",
+      "url": "/quickstart"
+    }
+  ],
+  "topbarCtaButton": {
+    "type": "github",
+    "url": "https://github.com/verdexlab/verdex"
+  },
+  "anchors": [
+    {
+      "name": "GitHub repository",
+      "icon": "github",
+      "url": "https://github.com/verdexlab/verdex"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "how-it-works"
+      ]
+    },
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/products",
+        "essentials/options",
+        "essentials/output"
+      ]
+    },
+    {
+      "group": "Contribute",
+      "pages": [
+        "contribute/introduction",
+        "contribute/rules",
+        "contribute/variables",
+        "contribute/tests"
+      ]
+    }
+  ]
+}

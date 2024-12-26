@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 24.0.3'
+
+http:
+  # js/apps/account-ui/src/account-security/SigningIn.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/account/keycloak.v3/assets/SigningIn-{{reactAccountSigningInId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/24.0.2...24.0.3#diff-c4462020feae8d4657229de2ef767c6a6b1717d9f43e3c6bcb8e6780bdc178ca
+      - type: word
+        part: body
+        word: '({action:"delete_credential:"+'
+
+      - type: status
+        status: 200

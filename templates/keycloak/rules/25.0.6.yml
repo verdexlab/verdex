@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 25.0.6'
+
+http:
+  # js/apps/admin-ui/src/user/EditUser.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/EditUser-{{reactAdminEditUserId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/25.0.5...25.0.6#diff-f5a9237e952be9a60da429eb9ec66d478a4c2a5a731778c662d98217f1ae8cd4
+      - type: regex
+        part: body
+        regex: '{form:\w+,realm:\w+,user:\w+,bruteForce:\w+,userProfileMetadata:\w+,refresh:\w+,save:\w+}'
+
+      - type: status
+        status: 200

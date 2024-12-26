@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 21.0.2'
+
+http:
+  # js/libs/keycloak-admin-client/src/defs/requiredActionProviderRepresentation.ts
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/{{reactMainName}}-{{reactAdminMainId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/21.0.1...21.0.2#diff-eb65cf8f1ffa635d6b8f3e3b0e5c3586dad41f85baa8ffe2d1908cdf3bcc9a45
+      - type: word
+        part: body
+        word: 'TERMS_AND_CONDITIONS="TERMS_AND_CONDITIONS"'
+
+      - type: status
+        status: 200

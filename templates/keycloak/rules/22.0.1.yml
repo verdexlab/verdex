@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 22.0.1, < 23.0.0'
+
+http:
+  # js/apps/admin-ui/public/locales/zh-CN/identity-providers.json
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/locales/zh-CN/identity-providers.json'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/22.0.0...22.0.1#diff-b905d3e40f394f572189fcbc2b7fa0276be1e9408b8303f11bf794df0131bf9d
+      - type: word
+        part: body
+        word: '"prompts": {'
+
+      - type: status
+        status: 200

@@ -1,0 +1,11 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/auth/realms/master'
+  part: body
+  regex: '(\{"realm":"master","public_key":")'
+  group: 1

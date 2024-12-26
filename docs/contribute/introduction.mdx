@@ -1,0 +1,44 @@
+---
+title: 'Introduction'
+description: 'How to contribute to Verdex by improving detections or reporting issues.'
+icon: 'lightbulb'
+iconType: 'duotone'
+---
+
+<Note>
+  We appreciate your interest in contributing to Verdex,
+  please feel free to "bring your rock to the building" 🪨,
+  give feedback/suggestions or reach out by e-mail at `verdexlab[at]proton.me`
+</Note>
+
+## Official Repository
+
+Verdex is open-source and the entire code can be found on the official GitHub repository:
+
+[https://github.com/verdexlab/verdex](https://github.com/verdexlab/verdex)
+
+Please read the [CONTRIBUTING.md](https://github.com/verdexlab/verdex/blob/dev/CONTRIBUTING.md) before new Pull Requests (PR).
+
+## Structure
+
+The project structure breaks down as follows:
+
+* `docs/` : project documentation
+
+* `templates/` : products, templates and rules
+
+  * `<product>/` : each supported product has its own directory
+
+    * `<product>.yml` : product definition
+
+    * `rules/` : detection rules for product, see [Rules section](/contribute/rules)
+
+    * `variables/` : detection variables for product, see [Variables section](/contribute/variables)
+
+    * `tests/` : test cases for product, see [Tests section](/contribute/tests)
+
+* `verdex/` : the core detection engine
+
+<Note>
+  To contribute new detected versions or products, everything is in the `templates/` directory.
+</Note>

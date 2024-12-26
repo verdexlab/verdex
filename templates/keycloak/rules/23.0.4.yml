@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 23.0.4'
+
+http:
+  # js/apps/admin-ui/src/sessions/SessionsTable.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/SessionsTable-{{reactAdminSessionsTableId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/23.0.3...23.0.4#diff-df5c3edb3bfe4c6cb9f088b27a750556379598b0e27931cd197a56c880a0a925
+      - type: word
+        part: body
+        word: '.data.type==="OFFLINE"?['
+
+      - type: status
+        status: 200

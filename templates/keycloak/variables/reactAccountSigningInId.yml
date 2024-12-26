@@ -1,0 +1,11 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/resources/{{resourcesId}}/account/keycloak.v3/assets/{{reactMainName}}-{{reactAccountMainId}}.js'
+  part: body
+  regex: 'import\("\./SigningIn-([a-zA-Z0-9-_]+)\.js"\)'
+  group: 1

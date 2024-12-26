@@ -1,0 +1,18 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 17.0.0'
+
+http:
+  - method: GET
+    path: '/realms/master/protocol/openid-connect/login-status-iframe.html'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        word: 'function checkState('
+
+      - type: status
+        status: 200

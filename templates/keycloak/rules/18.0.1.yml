@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 18.0.1, < 21.0.0'
+
+http:
+  # themes/src/main/resources/theme/base/admin/resources/js/controllers/realm.js
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak/js/controllers/realm.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/18.0.0...18.0.1#diff-ee0499c0d4e864b1a09e5f55473e2d02e8411106d14038cc392acb2fdf87f38b
+      - type: word
+        part: body
+        word: "// it isn't be possible to set permissions to username and email"
+
+      - type: status
+        status: 200

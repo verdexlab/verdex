@@ -1,0 +1,11 @@
+info:
+  product: nextcloud
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/login'
+  part: body
+  regex: '(src="\/apps\/files_rightclick\/js\/files\.js)'
+  group: 1

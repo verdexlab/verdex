@@ -1,0 +1,67 @@
+name: Bug Report
+description: Report an issue in Verdex
+labels: ["bug"]
+body:
+  - type: checkboxes
+    attributes:
+      label: Before reporting an issue
+      description: |
+        Please search to see if the issue is already reported, and try to reproduce the issue on the latest release.  
+        Any reported issues must be reproducible in the [latest release](https://github.com/verdexlab/verdex/releases) of Verdex.
+      options:
+        - label: I have read and understood the above terms for submitting issues.
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Affected area
+      options:
+        - Templates
+        - CLI and core
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: Provide a clear and concise description of what the problem is.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: What version of Verdex CLI are you running?
+    validations:
+      required: true
+  - type: textarea
+    id: behaviorExpected
+    attributes:
+      label: Expected behavior
+      description: Describe the expected behavior clearly and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: behaviorActual
+    attributes:
+      label: Actual behavior
+      description: Describe the actual behavior clearly and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: How to Reproduce?
+      description: Provide clear and concise steps to reproduce the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: other
+    attributes:
+      label: Anything else?
+      description: Links? References? Anything that will give us more context about the issue you are encountering!
+    validations:
+      required: false

@@ -1,0 +1,32 @@
+name: Product Suggestion
+description: Suggest a new product to add to be added to Verdex
+labels: ["product-suggestion"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Product Name
+      description: What is the name of the product?
+    validations:
+      required: true
+  - type: input
+    id: description
+    attributes:
+      label: Product Description
+      description: A small description of the product, in one sentence.
+    validations:
+      required: true
+  - type: input
+    id: icon
+    attributes:
+      label: Product Icon
+      description: An icon code from https://fontawesome.com/icons
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Describe why this product should be added to Verdex.
+    validations:
+      required: true

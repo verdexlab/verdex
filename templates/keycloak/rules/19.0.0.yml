@@ -1,0 +1,21 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+# /js/keycloak.js removed since v26
+version: '>= 19.0.0, < 26.0.0'
+
+http:
+  # adapters/oidc/js/src/keycloak.js
+  - method: GET
+    path: '/js/keycloak.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/18.0.2...19.0.0#diff-2bd30033d8d5fb0bd0780f06668fd6a51ffce8a3827cfff8603969368de7e576
+      - type: word
+        part: body
+        word: 'if (kc.idToken) {'
+
+      - type: status
+        status: 200

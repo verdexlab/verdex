@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 12.0.3, < 17.0.0'
+
+http:
+  # themes/src/main/resources/theme/keycloak.v2/account/resources/welcome-page-scripts.js
+  - method: GET
+    path: '/auth/resources/{{resourcesIdLegacy}}/account/keycloak.v2/welcome-page-scripts.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/12.0.2...12.0.3#diff-6c87bb77cd0de25e61c443e6d83d745cfb458d06755faf51159eb6c0f14f5c08
+      - type: word
+        part: body
+        word: 'function sanitize(dirtyString) {'
+
+      - type: status
+        status: 200

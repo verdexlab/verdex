@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 12.0.4, < 17.0.0'
+
+http:
+  # themes/src/main/resources/theme/base/admin/resources/js/controllers/realm.js
+  - method: GET
+    path: '/auth/resources/{{resourcesIdLegacy}}/admin/base/js/controllers/realm.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/12.0.3...12.0.4#diff-ee0499c0d4e864b1a09e5f55473e2d02e8411106d14038cc392acb2fdf87f38b
+      - type: word
+        part: body
+        word: 'RealmSpecificLocalizationTexts.get({id: Current.realm.realm, locale: locale}, function (localizationTexts) {'
+
+      - type: status
+        status: 200

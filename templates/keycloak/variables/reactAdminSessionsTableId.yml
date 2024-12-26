@@ -1,0 +1,11 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/SessionsSection-{{reactAdminSessionsSectionId}}.js'
+  part: body
+  regex: 'from"\./SessionsTable-([a-zA-Z0-9-_]+)\.js";'
+  group: 1

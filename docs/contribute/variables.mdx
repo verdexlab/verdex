@@ -1,0 +1,57 @@
+---
+title: 'Variables'
+description: 'Learn about variables to use in Verdex rules'
+icon: 'brackets-curly'
+iconType: 'duotone'
+---
+
+Variables are useful to extract specific information from service, to be used in rules.
+
+## Definition
+
+Variables are auto-discovered in `templates/<product>/variables/` directories and are using `.yml` extension.
+
+The default structure of a variable is the following:
+
+```yaml
+# General information
+info:
+  product: keycloak    # Associated product
+  author: pierreavn   # Variable author
+
+# How to resolve variable value
+resolve:
+  type: regex                  # Resolve method ('regex' only)
+  method: GET                  # HTTP method
+  path: '/info'                # Path on target
+  part: body                   # Part where to extract value ('body' only)
+  regex: '"name": "(a-z)+"'    # Matching regex
+  group: 1                     # Matching regex group number
+```
+
+## Usage
+
+Variables can be used with `{{variableFileName}}` in `path` of rules or other variables.
+
+For example in the following rule, variable `resourcesId.yml` will be replaced in path:
+
+```yaml
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 25.0.1, < 26.0.7'
+
+http:
+  - method: GET
+    path: '/resources/{{resourcesId}}/login/resources/js/authChecker.js'
+
+    match-condition: and
+    matchers:
+      - type: word
+        part: body
+        word: '// Remove the timeout'
+
+      - type: status
+        status: 200
+```

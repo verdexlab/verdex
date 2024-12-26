@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 22.0.4'
+
+http:
+  # services/src/main/resources/org/keycloak/protocol/oidc/endpoints/3p-cookies-step1.html
+  - method: GET
+    path: '/realms/master/protocol/openid-connect/3p-cookies/step1.html'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/22.0.3...22.0.4#diff-ada998db918d740fc8aa355c18781fa2df186d48d86a07244273535b88235447
+      - type: word
+        part: body
+        word: "// Signal 3rd-party access support to the page embedding this iframe."
+
+      - type: status
+        status: 200

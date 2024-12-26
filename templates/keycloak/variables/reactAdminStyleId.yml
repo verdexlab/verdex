@@ -1,0 +1,11 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/admin/master/console'
+  part: body
+  regex: '/(main|index|style)-([a-zA-Z0-9-_]+).css">'
+  group: 2

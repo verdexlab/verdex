@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 16.0.0, < 17.0.0'
+
+http:
+  # themes/src/main/resources/theme/keycloak/login/resources/css/login.css
+  - method: GET
+    path: '/auth/resources/{{resourcesIdLegacy}}/login/keycloak/css/login.css'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/15.1.1...16.0.0#diff-cc2b625f843865ee5186a5b77258a0b2fb66c0754b9e7e2be0bd0247408015e2
+      - type: word
+        part: body
+        word: '/* Patternfly CSS places a "bg-login.jpg" as the background on this'
+
+      - type: status
+        status: 200

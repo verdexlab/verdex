@@ -1,0 +1,71 @@
+---
+title: 'Quickstart'
+description: 'Learn how to run first Verdex detections in seconds.'
+---
+
+<Steps>
+  <Step title="Install Verdex">
+    <Tabs>
+      <Tab title="Go">
+        ```bash
+        go install -v github.com/verdexlab/verdex@latest
+        ```
+
+        <Note>
+          Verdex requires the latest GO version to install successfully.
+        </Note>
+      </Tab>
+
+      <Tab title="Docker">
+        ```bash
+        # using bash:
+        echo 'alias verdex="docker run --rm verdexlab/verdex:latest"' >> ~/.bashrc
+        source ~/.bashrc
+
+        # or using zsh:
+        echo 'alias verdex="docker run --rm verdexlab/verdex:latest"' >> ~/.zshrc
+        source ~/.zshrc
+        ```
+      </Tab>
+
+      <Tab title="Binary">
+        Download the latest binary from official releases: 
+        [https://github.com/verdexlab/verdex/releases?q=cli-&expanded=true](https://github.com/verdexlab/verdex/releases?q=cli-&expanded=true)
+      </Tab>
+    </Tabs>
+  </Step>
+
+  <Step title="Check Verdex installation">
+    ```bash
+    verdex -version
+    ```
+  </Step>
+
+  <Step title="Run version detection">
+    ```bash
+    verdex -target https://keycloak.example.com -output-json ./results.json
+    ```
+
+    Yay, here are the first Verdex results! 🎉
+  </Step>
+</Steps>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Products" icon="crosshairs-simple" href="/essentials/products">
+    Explore the services supported by Verdex and vote for the next ones.
+  </Card>
+
+  <Card title="Detection Options" icon="wrench" href="/essentials/options">
+    Learn about the available Verdex options to optimize your scans.
+  </Card>
+
+  <Card title="Output Formats" icon="right-from-bracket" href="/essentials/output">
+    Learn about the different output formats that Verdex supports.
+  </Card>
+
+  <Card title="Contribute" icon="lightbulb" href="/contribute/introduction">
+    How to contribute to Verdex by improving detections or reporting issues.
+  </Card>
+</CardGroup>

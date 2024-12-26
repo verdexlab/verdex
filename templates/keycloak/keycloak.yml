@@ -1,0 +1,18 @@
+name: Keycloak
+description: Keycloak is an open source identity and access management solution.
+website: https://www.keycloak.org
+
+versions:
+  source: github
+  organization: keycloak
+  repository: keycloak
+
+cpe:
+  vendor: redhat
+  product: keycloak
+  type: a
+
+smoke-tests:
+  product:
+    - detectKeycloak
+    - detectKeycloakLegacy

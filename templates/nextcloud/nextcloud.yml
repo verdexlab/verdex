@@ -1,0 +1,19 @@
+name: NextCloud
+description: Nextcloud is an open-source platform that provides a self-hosted solution for file sharing, collaboration, and cloud storage.
+website: https://nextcloud.com/
+
+versions:
+  source: github
+  organization: nextcloud
+  repository: server
+
+cpe:
+  vendor: nextcloud
+  product: nextcloud
+  type: a
+
+smoke-tests:
+  product:
+    - detectNextCloud
+  version:
+    - infoVersion

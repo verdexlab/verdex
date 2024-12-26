@@ -1,0 +1,21 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+# /js/keycloak.js removed since v26
+version: '>= 22.0.5, < 26.0.0'
+
+http:
+  # js/libs/keycloak-js/src/keycloak.js
+  - method: GET
+    path: '/js/keycloak.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/22.0.4...22.0.5#diff-eeb93448269ec6cd4a3c7c3b55fd5a77ab95ca0a63ec3d46c13a25b739d29a42
+      - type: word
+        part: body
+        word: "['code', 'state', 'session_state', 'kc_action_status', 'iss']"
+
+      - type: status
+        status: 200

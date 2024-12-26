@@ -1,0 +1,82 @@
+---
+title: 'Detection Options'
+description: 'Learn about the available Verdex options to optimize your scans.'
+icon: 'wrench'
+iconType: 'duotone'
+---
+
+## Basics
+
+To perform its scans, Verdex needs the URL of the target to scan, for example:
+
+<ParamField path="-target" type="URL">
+```bash
+verdex -target https://keycloak.example.com
+```
+</ParamField>
+
+By default, Verdex tries to automatically detect the target product.  
+Use `-product` to specify the product to scan (see [Products section](/essentials/products) for options).
+
+## Multiple targets
+
+To scan multiple targets at the same time, use `-list` (one target per line):
+
+<ParamField path="-list" type="filepath">
+```bash
+verdex -list ./targets.txt
+```
+</ParamField>
+
+## Output formats
+
+To change the output format of Verdex results, see dedicated page:
+
+<CardGroup cols={2}>
+  <Card title="Output Formats" icon="right-from-bracket" href="/essentials/output">
+    Learn about the different output formats that Verdex supports.
+  </Card>
+</CardGroup>
+
+## Logging
+
+To display verbose output (useful for debug), use `-verbose`:
+<ParamField path="-verbose" type="boolean" default={false}>
+```bash
+verdex -target https://example.com -verbose
+```
+</ParamField>
+
+## Improvement Reports
+
+Sometimes, Verdex cannot determine version for multiple reasons (missing or incorrect rules, specific configuration, ...).
+Use `-report-errors` to automatically report failures to Verdex maintainers for manual debugging.
+By default, targets are not reported.
+
+<Note>
+  URLs of reported targets will NOT be publicly visible and will be accessed by Verdex maintainers for debugging purposes only.
+</Note>
+
+<ParamField path="-report-errors" type="boolean" default={false}>
+```bash
+verdex -target https://example.com -report-errors
+```
+</ParamField>
+
+## Custom templates
+
+Verdex uses templates to run scans (see [Contribute section](/contribute) for more information).
+
+By default, templates are loaded from latest release of official Verdex repository.
+
+To run scans with custom templates, use `-templates-directory`:
+
+<ParamField path="-templates-directory" type="dirpath">
+```bash
+verdex -target https://example.com -templates-directory ./templates
+```
+
+<Note>
+  If Verdex is run locally with `go run .`, templates directory is automatically set to `./templates`
+</Note>
+</ParamField>

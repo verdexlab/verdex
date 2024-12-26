@@ -1,0 +1,44 @@
+---
+title: 'Products'
+description: 'Explore the services supported by Verdex and vote for the next ones.'
+icon: 'crosshairs-simple'
+iconType: 'duotone'
+---
+
+import ProductsVotes from '/snippets/products-votes.mdx';
+
+<Update label="keycloak">
+  ```bash Detect keycloak version
+  verdex -product keycloak -target https://keycloak.example.com
+  ```
+
+  **Keycloak** is an open-source identity and access management solution maintained by RedHat.
+
+  **Detected versions:**  
+  `12.0.0` (dec. 2020) --> `26.0.7` (dec. 2024)
+
+  [Official Website](https://www.keycloak.org)     [GitHub Repository](https://github.com/keycloak/keycloak)
+</Update>
+
+<Update label="nextcloud">
+  ```bash Detect nextcloud version
+  verdex -product nextcloud -target https://nextcloud.example.com
+  ```
+
+  **NextCloud** is an open-source file sharing, collaboration and cloud storage solution.
+
+  **Detected versions:**  
+  Based on `/status.php` for the moment
+
+  [Official Website](https://nextcloud.com)     [GitHub Repository](https://github.com/nextcloud)
+</Update>
+
+## Vote for next products
+
+<CardGroup cols={2}>
+  <ProductsVotes />
+</CardGroup>
+
+Want to scan a product not yet supported?  
+[Suggest a new product](https://github.com/verdexlab/verdex/issues/new?template=product-suggestion.yml) 
+or [contribute to Verdex](/contribute)

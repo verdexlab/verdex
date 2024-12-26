@@ -1,0 +1,58 @@
+---
+title: "Output Formats"
+description: "Learn about the different output formats that Verdex supports."
+icon: "right-from-bracket"
+iconType: "duotone"
+---
+
+For now, Verdex only supports output in JSON format.
+
+## JSON format
+
+Use `-output-json` to define the path of JSON output file where to export results, for example:
+
+<ParamField path="-output-json" type="filepath">
+```bash
+verdex -target https://example.com -output-json ./results.json
+```
+</ParamField>
+
+JSON output always have the same structure:
+
+```json
+{
+  // verdex version
+  "scanner": "verdex@1.0.0",
+
+  // templates source ("file:<dirpath>" if custom path)
+  "templates": "github:verdexlab/verdex@1.0.0",
+
+  // scan results
+  "results": [
+    {
+      // scan's start date and time
+      "startedAt": "2024-12-16T14:07:14+01:00",
+
+      // scan's end date and time
+      "endedAt": "2024-12-16T14:07:28+01:00",
+
+      // input target
+      "target": "https://example.com",
+
+      // input or detected product (empty if product detection failed)
+      "product": "keycloak",
+
+      // was the version detection successful?
+      "success": true,
+
+      // list of detected possible versions
+      "possibleVersions": [
+        {
+          "version": "25.0.6",
+          "cpe": "cpe:2.3:a:redhat:keycloak:25.0.6:*:*:*:*:*:*:*"
+        }
+      ]
+    }
+  ]
+}
+```

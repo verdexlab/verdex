@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 24.0.5'
+
+http:
+  # js/apps/admin-ui/src/identity-providers/add/DetailSettings.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/DetailSettings-{{reactAdminDetailSettingsId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/24.0.4...24.0.5#diff-9a5c9673210de687342b8588bc8baca5489f1de5ba0df899e4a79375529a36c7
+      - type: regex
+        part: body
+        regex: ',\w+&&\(\w+\.config\.authnContextClassRefs=\w+\),\w+&&\(\w+\.config\.authnContextDeclRefs=\w+\),'
+
+      - type: status
+        status: 200

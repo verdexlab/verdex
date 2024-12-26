@@ -1,0 +1,19 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '26.0.1'
+
+http:
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/main-{{reactAdminMainId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/26.0.0...26.0.1?diff=split&w=#diff-133223d51129fb1fc4560bee7f8783bf3179b8150de539448e93db5e49f0666b
+      - type: regex
+        part: body
+        regex: '{const r=new AbortController,{signal:i}=r;return a\(\),e\(\)\.then\('
+
+      - type: status
+        status: 200

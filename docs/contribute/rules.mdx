@@ -1,0 +1,41 @@
+---
+title: 'Rules'
+description: 'How to create version detection rules in Verdex'
+icon: 'list-check'
+iconType: 'duotone'
+---
+
+Rules are the core of Verdex detection.
+
+## Definition
+
+Rules are auto-discovered in `templates/<product>/rules/` directories and are using `.yml` extension.
+
+The syntax is deliberately close to that of the [Nuclei templates](https://github.com/projectdiscovery/nuclei), to simplify the development of new rules.
+
+The default structure of a rule is the following:
+
+```yaml
+# General information
+info:
+  product: keycloak    # Associated product
+  author: pierreavn   # Variable author
+
+# Matching versions
+# available syntax: https://github.com/Masterminds/semver
+version: '>= 25.0.1'
+
+# Checks
+http:
+  - method: GET         # HTTP method
+    path: '/info'       # Path on target
+
+    match-condition: and
+    matchers:
+      - type: word              # Resolve method ('status', 'word' or 'regex')
+        part: body              # Part where to extract value ('body' only)
+        word: '{"key": "newTranslationKey"'
+
+      - type: status
+        status: 200
+```

@@ -1,0 +1,18 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 26.0.2'
+
+http:
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/ClientsSection-{{reactAdminClientsSectionId}}.js'
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        word: '"data-testid":`client-home-url-${t.clientId}`'
+
+      - type: status
+        status: 200

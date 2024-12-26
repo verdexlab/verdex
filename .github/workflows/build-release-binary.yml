@@ -1,0 +1,21 @@
+name: Build and Release binary
+
+on:
+  schedule:
+  - cron: "30 1 * * *"
+
+jobs:
+  build-release-binary:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Verdex binary
+        run: |
+          go mod download
+          go build -ldflags "-X github.com/verdexlab/verdex/verdex/core.releaseEnvironment=release-binary" -o verdex-binary
+
+      - name: Store Verdex binary
+        run: |
+          # TODO

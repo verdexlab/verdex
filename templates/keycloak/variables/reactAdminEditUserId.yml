@@ -1,0 +1,11 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/{{reactMainName}}-{{reactAdminMainId}}.js'
+  part: body
+  regex: 'import\("\./EditUser-([a-zA-Z0-9-_]+)\.js"\)'
+  group: 1

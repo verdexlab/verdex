@@ -1,0 +1,11 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/realms/master/account'
+  part: body
+  regex: '/resources/([a-z0-9]+)/'
+  group: 1

@@ -1,0 +1,25 @@
+name: Feature Request
+description: Request an enhancement or a new feature to be added to Verdex
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the feature or enhancement at a high-level.
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Describe why the feature should be added.
+    validations:
+      required: false
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Design ideas? Implementation ideas? Anything that will give us more context about the feature you are proposing!
+    validations:
+      required: false
