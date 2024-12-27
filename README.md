@@ -6,11 +6,11 @@ even when traditional versioning information is unavailable.
 
 🔧 Instead of relying on exposed headers, Verdex quickly analyzes the features present on a service. 
 For example, **if a feature was introduced in a specific version, Verdex uses this information to deduce the 
-minimum version of the service** (see [How It Works](/how-it-works) for more information).
+minimum version of the service** (see [How It Works](https://verdex-docs.mintlify.app/how-it-works) for more information).
 
 🪶 Verdex relies solely on **non-aggressive methods**, in particular by using mostly static assets (javascript, css and html files).
 
-🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](/essentials/products) documentation).
+🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](https://verdex-docs.mintlify.app/essentials/products) documentation).
 
 ## 📖 Documentation
 The entire tool documentation is available at [https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
