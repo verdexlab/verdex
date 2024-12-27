@@ -1,5 +1,5 @@
 # Verdex work files
-.cache
+templates/.cache
 targets.txt
 output.json
 

@@ -100,7 +100,7 @@ func unpackReleaseWithCallback(destDir string, data *bytes.Reader) error {
 	callbackFunc := func(uri string, f fs.FileInfo, r io.Reader) error {
 		uriParts := strings.Split(uri, "/")
 
-		// example: verdexlab-verdex-a0b1c2d3/products/keycloak/rules/26.0.5.yml
+		// example: verdexlab-verdex-a0b1c2d3/templates/keycloak/rules/26.0.5.yml
 		if len(uriParts) < 2 || uriParts[1] != downloadDirectory || f.IsDir() {
 			return nil
 		}
@@ -109,15 +109,20 @@ func unpackReleaseWithCallback(destDir string, data *bytes.Reader) error {
 			return nil
 		}
 
-		writeFile := strings.Join(uriParts[2:], "-")
-		writePath := path.Join(destDir, writeFile)
+		writeDirectory := path.Join(destDir, strings.Join(uriParts[2:len(uriParts)-1], "/"))
+		writeFilePath := path.Join(writeDirectory, uriParts[len(uriParts)-1])
 
 		bin, err := io.ReadAll(r)
 		if err != nil {
 			return fmt.Errorf("failed to read release file %s", uri)
 		}
 
-		return os.WriteFile(writePath, bin, f.Mode())
+		err = os.MkdirAll(writeDirectory, os.ModePerm)
+		if err != nil {
+			return fmt.Errorf("failed to create directory recursively %s", uri)
+		}
+
+		return os.WriteFile(writeFilePath, bin, f.Mode())
 	}
 
 	zipReader, err := zip.NewReader(data, data.Size())
