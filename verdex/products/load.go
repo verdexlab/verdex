@@ -38,9 +38,6 @@ func parseProductYaml(yamlPath string) (*Product, error) {
 	yamlName := filepath.Base(yamlPath)
 	product.ID = strings.TrimSuffix(yamlName, filepath.Ext(yamlName))
 
-	// Set versions cache path
-	product.Versions.cachePath, _ = filepath.Abs(filepath.Join(filepath.Dir(yamlPath), versionsCacheFile))
-
 	err = validator.New(validator.WithRequiredStructEnabled()).Struct(product)
 	if err != nil {
 		return nil, err

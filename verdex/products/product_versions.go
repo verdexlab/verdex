@@ -10,7 +10,6 @@ type ProductVersions struct {
 	RawList      []string              `yaml:"list" validate:"required_if=Source list"`
 	Organization string                `yaml:"organization" validate:"required_if=Source github"`
 	Repository   string                `yaml:"repository" validate:"required_if=Source github"`
-	cachePath    string                `yaml:"-"`
 }
 
 type ProductVersionsSource string

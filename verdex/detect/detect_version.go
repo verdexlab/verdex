@@ -28,7 +28,7 @@ func DetectVersion(execution *core.Execution, detection *core.Detection) (v []*s
 	excludedConstraints := make([]*semver.Constraints, 0)
 
 	// Reload versions list
-	err = product.Versions.ReloadList()
+	err = product.Versions.ReloadList(&execution.Config, detection.Product)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to reload product versions list")
 		return []*semver.Version{}, nil

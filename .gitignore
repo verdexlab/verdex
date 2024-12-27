@@ -1,11 +1,10 @@
-.DS_Store
-
+# Verdex work files
+.cache
 targets.txt
 output.json
 
-# Templates Caches
-.versions.cache
-.cache
-
 # Build
 dist/
+
+# Misc
+.DS_Store

@@ -22,7 +22,7 @@ import (
 var maxSimultaneousTestContainers = 3
 
 func RunTests(execution *core.Execution, product *products.Product) {
-	err := product.Versions.ReloadList()
+	err := product.Versions.ReloadList(&execution.Config, product.ID)
 	if err != nil {
 		log.Fatal().Err(err).Msg("Failed to load product versions list")
 	}
