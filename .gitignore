@@ -6,3 +6,6 @@ output.json
 # Templates Caches
 .versions.cache
 .cache
+
+# Build
+dist/

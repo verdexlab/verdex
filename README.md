@@ -13,8 +13,7 @@ minimum version of the service** (see [How It Works](/how-it-works) for more inf
 🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](/essentials/products) documentation).
 
 ## 📖 Documentation
-The entire tool documentation is available at:  
-[https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
+The entire tool documentation is available at [https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
 
 ## 🚀 Install Verdex
 
@@ -29,7 +28,8 @@ echo 'alias verdex="docker run --rm verdexlab/verdex:latest"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-> 📖 Read documentation for more installation options: [https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
+> 📖 Read documentation for more installation options: 
+[https://verdex-docs.mintlify.app/quickstart](https://verdex-docs.mintlify.app/quickstart)
 
 ## 🌪️ Run version detection
 
@@ -37,7 +37,8 @@ source ~/.bashrc
 verdex -target https://keycloak.example.com -output-json ./results.json
 ```
 
-> 📖 Read documentation for more detection options: [https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
+> 📖 Read documentation for more detection options: 
+[https://verdex-docs.mintlify.app/essentials/options](https://verdex-docs.mintlify.app/essentials/options)
 
 ## License
 Verdex is distributed under MIT License.

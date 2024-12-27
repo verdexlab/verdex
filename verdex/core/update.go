@@ -9,8 +9,8 @@ import (
 	"github.com/verdexlab/verdex/verdex/thirdparty"
 )
 
-var cliReleasesPrefix = "cli-"
-var cliReleasesUrl = "https://github.com/verdexlab/verdex/releases?q=cli-&expanded=true"
+var cliReleasesPrefix = "v"
+var cliReleasesUrl = "https://github.com/verdexlab/verdex/releases?q=v&expanded=true"
 var cliReleaseCacheExpiration = 24 * time.Hour
 
 // Check if a Verdex CLI update is available and render message

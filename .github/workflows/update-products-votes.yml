@@ -1,8 +1,9 @@
-name: Update Products Votes
+name: Update products votes
 
 on:
   schedule:
-  - cron: "30 1 * * *"
+    - cron: "30 1 * * *"
+  workflow_dispatch:
 
 jobs:
   update-products-votes:
@@ -12,15 +13,21 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v4
         with:
           python-version: 3.8
 
-      - name: Update Products Votes
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Update products votes
         run: python3 scripts/update-products-votes.py
 
-      - name: Git Commit & Push
+      - name: Git commit & push
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com

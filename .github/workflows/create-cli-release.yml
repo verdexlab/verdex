@@ -1,0 +1,25 @@
+name: Create CLI release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-cli-release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Determine release version
+        run: echo "VERDEX_VERSION=$(awk '/cliVersion/{print $4}' verdex/core/config.go | sed -e 's/\"//g')" >> $GITHUB_ENV
+
+      - name: Create tag
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git tag "v$VERDEX_VERSION"
+          git push --tags
