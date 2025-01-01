@@ -1,6 +1,7 @@
 package assets
 
 import (
+	"crypto/tls"
 	"fmt"
 	"io"
 	"net/http"
@@ -17,7 +18,9 @@ var userAgent = "Verdex - Open-Source scanning project"
 var assets = syncmap.Map{}
 
 var client = &http.Client{
-	Transport: &http.Transport{},
+	Transport: &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	},
 }
 
 // Fetch asset at given URL
