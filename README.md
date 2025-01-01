@@ -12,6 +12,8 @@ minimum version of the service** (see [How It Works](https://verdex-docs.mintlif
 
 🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](https://verdex-docs.mintlify.app/essentials/products) documentation).
 
+⚠️ Any unauthorized use of Verdex to analyze or exploit online services is strictly prohibited and violates both our license agreement and applicable laws. **Verdex must be used with explicit authorization from the owner or administrator of the targets being scanned**.
+
 ## 📖 Documentation
 The entire tool documentation is available at [https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
 

@@ -19,7 +19,8 @@ func RenderDetectionResults(detection *core.Detection, err error) {
 	if err != nil {
 		log.Error().Err(err).Msg("An error occured")
 	} else if len(detection.PossibleVersions) == 0 {
-		log.Error().Msgf("Cannot determine %s version, maybe next time!", detection.Product)
+		log.Error().Msgf("Cannot determine %s version (•_•')", detection.Product)
+		log.Error().Msg("If service is running on a specific path, try to specify it (eg: -target https://example.com/path)")
 	} else if len(detection.PossibleVersions) == 1 {
 		log.Info().Msgf("🌪️  %s version found: %s", detection.Product, color.GreenString(detection.PossibleVersions[0].String()))
 	} else {

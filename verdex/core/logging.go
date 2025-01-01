@@ -21,6 +21,7 @@ var banner = fmt.Sprintf(`
 // Render Verdex banner
 func LogBanner() {
 	log.Info().Msgf("%s\n", banner)
+	log.Warn().Msg("Verdex is for ethical scans only, unauthorized use may constitute a violation of applicable laws.")
 }
 
 // Setup logger formatting
