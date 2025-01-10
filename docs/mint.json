@@ -47,6 +47,13 @@
       ]
     },
     {
+      "group": "Expert - Go further",
+      "pages": [
+        "expert/vulnerabilities",
+        "expert/become-expert"
+      ]
+    },
+    {
       "group": "Contribute",
       "pages": [
         "contribute/introduction",

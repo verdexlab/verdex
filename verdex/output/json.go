@@ -24,6 +24,7 @@ type OutputResultJson struct {
 	Product          string                    `json:"product"`
 	Success          bool                      `json:"success"`
 	PossibleVersions []OutputResultVersionJson `json:"possibleVersions"`
+	CVEs             []core.CVE                `json:"cves"`
 }
 
 type OutputResultVersionJson struct {
@@ -52,6 +53,7 @@ func exportResultsJson(execution *core.Execution, path string) error {
 			Product:          detection.Product,
 			Success:          detection.Success,
 			PossibleVersions: []OutputResultVersionJson{},
+			CVEs:             detection.CVEs,
 		}
 
 		if detection.Success {

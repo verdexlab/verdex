@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/rs/zerolog/log"
+	"github.com/verdexlab/verdex/verdex/api"
 	"github.com/verdexlab/verdex/verdex/core"
 	"github.com/verdexlab/verdex/verdex/detect"
 	"github.com/verdexlab/verdex/verdex/output"
@@ -54,6 +55,7 @@ func main() {
 			continue
 		} else if inputProduct != nil && (targetProduct == nil || targetProduct.ID != inputProduct.ID) {
 			log.Warn().Msgf("Target doesn't seems to run %s, continuing", inputProduct.ID)
+			targetProduct = products.GetProduct(inputProduct.ID)
 		}
 
 		detection.Product = targetProduct.ID
@@ -81,6 +83,21 @@ func main() {
 				}
 			} else {
 				log.Info().Msg("Feel free to report it (using -report-errors), we'll investigate to improve detection (target will NOT be publicly visible)")
+			}
+		}
+
+		if detection.Success {
+			versionsStr := make([]string, 0)
+			for _, version := range versions {
+				versionsStr = append(versionsStr, version.String())
+			}
+
+			vulnerabilities, isApiKeyValid, err := api.GetCVEsFromVersions(detection.Product, versionsStr, execution.Config.ApiKey)
+			if err != nil {
+				log.Error().Err(err).Msg("Failed to get vulnerabilities from API")
+			} else if vulnerabilities != nil {
+				detection.CVEs = vulnerabilities.CVEs
+				ui.RenderDetectionCVEs(execution, vulnerabilities, isApiKeyValid)
 			}
 		}
 	}

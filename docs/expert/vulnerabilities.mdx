@@ -1,0 +1,107 @@
+---
+title: 'Vulnerabilities'
+description: 'Discover how to obtain the list of vulnerabilities and update recommendations.'
+icon: 'light-emergency-on'
+iconType: 'duotone'
+---
+
+import ExpertRequired from '/snippets/expert-required.mdx';
+
+<ExpertRequired />
+
+We are aware of the difficulty of obtaining a precise list of vulnerabilities actually applicable to a specific version.
+
+The main objective behind Verdex is to **quickly identify the vulnerabilities associated with the detected version and determine update recommendations (nearest non-vulnerable version)**.
+
+<Note>
+    **Each CVE is reviewed manually, to provide accurate vulnerable versions and available patches.**
+    New CVEs are added as they become available.
+</Note>
+
+_👉&nbsp;&nbsp;Click on the screenshot below to enlarge_
+<Frame>
+  <img src="/images/vulnerabilities.png" />
+</Frame>
+
+More CVE data are available in output files (see below).
+
+
+## Usage
+
+To obtain details of vulnerabilities and update recommendations, simply provide the <Icon icon="tornado" iconType="duotone" /> **Expert** API key with `-key`:
+
+```bash
+verdex -target https://example.com -key xyz
+```
+
+The list of vulnerabilities will be **automatically displayed at the end of a successful scan**, as well as **in the output files**.
+
+If you don't have an <Icon icon="tornado" iconType="duotone" /> **Expert** API key yet, 
+find out how to [Become Expert](/expert/become-expert).
+
+
+## Available CVE data
+
+Here are CVE data available in Verdex output files:
+- **CVE ID** (`CVE-YYYY-XXXX`)
+- **GitHub Security Advisory ID** if applicable (`GHSA-xxxx-yyyy-zzzz`)
+- **Summary** of the vulnerability description
+- **Description**
+- **Severity** (`critical`, `high`, `medium`, `low` or `N/A`)
+- **CVSS score** preferably v3.1 if available
+- **EPSS score** updated daily from [first.org API](https://www.first.org/epss/api)
+- **Vulnerable versions** (eg. `< 22.0.13 || >= 23.* < 23.0.6`)
+- **Nearest patched version (NPV)** (eg. `23.0.6` if version 23.0.0 detected)
+- **Nuclei Template ID** if applicable
+- **Known Exploited Vulnerability (KEV) registration date** if applicable
+- **List of public GitHub POCs** if applicable
+- **List of reference links** (patch releases, security advisories, ...)
+- **Vendor advisory** if applicable
+- **Publication date**
+- **Latest update date**
+
+Here is data example for `CVE-2024-8698` on Keycloak:
+```json
+{
+    "id": "CVE-2024-8698",
+    "ghsa_id": "GHSA-xgfv-xpx8-qhcr",
+    "summary": "Improper Verification of SAML Responses Leading to Privilege Escalation in Keycloak",
+    "description": "A flaw exists in the SAML signature validation method within the Keycloak XMLSignatureUtil class. The method incorrectly determines whether a SAML signature is for the full document or only for specific assertions based on the position of the signature in the XML document, rather than the Reference element used to specify the signed element. This flaw allows attackers to create crafted responses that can bypass the validation, potentially leading to privilege escalation or impersonation attacks.",
+    "severity": "high",
+    "cvss_score": 7.7,
+    "epss_score": 0.00071,
+    "kev_since": null,
+    "pocs": [
+        "https://github.com/huydoppaz/CVE-2024-8698-POC",
+        "https://github.com/keycloak/keycloak/blob/main/saml-core/src/main/java/org/keycloak/saml/processing/core/util/XMLSignatureUtil.java#L415"
+    ],
+    "references": [
+        "https://github.com/advisories/GHSA-xgfv-xpx8-qhcr",
+        "https://github.com/keycloak/keycloak/releases/tag/25.0.6",
+        "https://nvd.nist.gov/vuln/detail/CVE-2024-8698",
+        "https://access.redhat.com/security/cve/CVE-2024-8698",
+        "https://bugzilla.redhat.com/show_bug.cgi?id=2311641",
+        "https://access.redhat.com/errata/RHSA-2024:8823",
+        ...
+    ],
+    "vendor_advisory": null,
+    "nuclei_template": "http/cves/2024/CVE-2024-8698.yaml",
+    "vulnerable_versions": "< 22.0.13 || >= 23.* < 24.0.8 || >= 25.* < 25.0.6",
+    "nearest_patched_version": "22.0.13",
+    "published_at": "2024-09-19T16:15:06Z",
+    "updated_at": "2024-12-12T20:15:22Z"
+}
+```
+
+
+## Update recommendations
+
+After the list of vulnerabilities, Verdex displays several recommendations for updating the service, including:
+
+- Nearest version without any vulnerabilities
+- Nearest version without critical vulnerabilities (CVSS &#8805; 9)
+
+<Tip>
+    Don't hesitate to [open a feature request](https://github.com/verdexlab/verdex/issues/new?assignees=&labels=enhancement&projects=&template=feature-request.yml) 
+    if you need any additional data - we'll be happy to add them to Verdex!
+</Tip>

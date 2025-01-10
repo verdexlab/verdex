@@ -6,6 +6,7 @@ import (
 )
 
 type Config struct {
+	ApiKey                string
 	TemplatesSource       TemplatesSource
 	TemplatesOrganization string
 	TemplatesRepository   string

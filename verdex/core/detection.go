@@ -15,4 +15,6 @@ type Detection struct {
 	TotalRequests    uint
 	Success          bool
 	PossibleVersions []*semver.Version
+	Vulnerable       bool
+	CVEs             []CVE
 }

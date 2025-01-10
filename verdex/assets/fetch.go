@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/rs/zerolog/log"
 	"github.com/verdexlab/verdex/verdex/core"
@@ -18,6 +19,7 @@ var userAgent = "Verdex - Open-Source scanning project"
 var assets = syncmap.Map{}
 
 var client = &http.Client{
+	Timeout: 5 * time.Second,
 	Transport: &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	},
