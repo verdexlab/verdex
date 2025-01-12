@@ -32,7 +32,7 @@ func (smokeTests *ProductSmokeTests) DetectProduct(execution *core.Execution, de
 
 		variableValue, err := assets.GetVariableValue(execution, detection, variable)
 		if err == nil && variableValue != "" {
-			log.Info().Msgf("Detected %s product with smoke test", product.Name)
+			log.Info().Msgf("Detected product with smoke test: %s", product.Name)
 			return true
 		}
 	}

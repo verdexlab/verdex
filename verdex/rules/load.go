@@ -1,7 +1,7 @@
 package rules
 
 import (
-	"os"
+	"io/fs"
 	"path/filepath"
 	"strings"
 
@@ -11,8 +11,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func LoadRuleFromFile(filePath string) error {
-	rule, err := parseRuleYaml(filePath)
+func LoadRuleFromFile(templatesFS fs.FS, filePath string) error {
+	rule, err := parseRuleYaml(templatesFS, filePath)
 	if err != nil {
 		return err
 	}
@@ -26,10 +26,10 @@ func LoadRuleFromFile(filePath string) error {
 	return nil
 }
 
-func parseRuleYaml(yamlPath string) (*Rule, error) {
+func parseRuleYaml(templatesFS fs.FS, yamlPath string) (*Rule, error) {
 	rule := Rule{}
 
-	yamlContent, err := os.ReadFile(yamlPath)
+	yamlContent, err := fs.ReadFile(templatesFS, yamlPath)
 	if err != nil {
 		return nil, err
 	}

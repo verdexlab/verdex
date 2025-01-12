@@ -1,7 +1,7 @@
 package products
 
 import (
-	"os"
+	"io/fs"
 	"path/filepath"
 	"strings"
 
@@ -10,8 +10,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func LoadProductFromFile(filePath string) error {
-	product, err := parseProductYaml(filePath)
+func LoadProductFromFile(templatesFS fs.FS, filePath string) error {
+	product, err := parseProductYaml(templatesFS, filePath)
 	if err != nil {
 		return err
 	}
@@ -22,10 +22,10 @@ func LoadProductFromFile(filePath string) error {
 	return nil
 }
 
-func parseProductYaml(yamlPath string) (*Product, error) {
+func parseProductYaml(templatesFS fs.FS, yamlPath string) (*Product, error) {
 	product := Product{}
 
-	yamlContent, err := os.ReadFile(yamlPath)
+	yamlContent, err := fs.ReadFile(templatesFS, yamlPath)
 	if err != nil {
 		return nil, err
 	}

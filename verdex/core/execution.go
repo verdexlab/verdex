@@ -17,6 +17,9 @@ type Execution struct {
 }
 
 func (execution *Execution) NewDetection(target string) *Detection {
+	// Remove ending slash
+	target = strings.TrimSuffix(target, "/")
+
 	detection := Detection{
 		Target:    target,
 		Product:   execution.Product,

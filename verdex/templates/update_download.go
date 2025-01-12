@@ -11,10 +11,10 @@ import (
 	"path"
 	"strings"
 
-	"github.com/cheggaaa/pb/v3"
 	"github.com/google/go-github/v30/github"
 	"github.com/verdexlab/verdex/verdex/core"
 	"github.com/verdexlab/verdex/verdex/thirdparty"
+	"github.com/verdexlab/verdex/verdex/ui"
 )
 
 var downloadDirectory = "templates"
@@ -61,12 +61,10 @@ func downloadLatestRelease(config *core.Config) (*github.RepositoryRelease, *byt
 	defer res.Body.Close()
 
 	// progress bar
-	bar := pb.New64(res.ContentLength).SetMaxWidth(100)
-	bar.Start()
-	res.Body = bar.NewProxyReader(res.Body)
-	defer bar.Finish()
+	bar := ui.ProgressBarStart(res.Body, res.ContentLength)
+	defer ui.ProgressBarFinish(bar)
 
-	bin, err := io.ReadAll(res.Body)
+	bin, err := io.ReadAll(bar.Reader)
 	if err != nil {
 		return nil, nil, errors.New("failed to read GitHub zipball body")
 	}

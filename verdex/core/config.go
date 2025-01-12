@@ -1,6 +1,7 @@
 package core
 
 import (
+	"io/fs"
 	"os"
 	"path"
 )
@@ -11,6 +12,7 @@ type Config struct {
 	TemplatesOrganization string
 	TemplatesRepository   string
 	TemplatesDirectory    string
+	TemplatesFS           fs.FS
 	TemplatesRelease      string
 	Verbose               bool
 	ReportTargets         bool

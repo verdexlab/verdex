@@ -4,7 +4,7 @@ go 1.21.6
 
 require (
 	github.com/Masterminds/semver/v3 v3.3.1
-	github.com/cheggaaa/pb/v3 v3.1.5
+	github.com/cheggaaa/pb/v3 v3.1.5 //go:build !js
 	github.com/chelnak/ysmrr v0.4.0
 	github.com/fatih/color v1.18.0
 	github.com/go-playground/validator/v10 v10.23.0

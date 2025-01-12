@@ -97,6 +97,13 @@ func main() {
 				log.Error().Err(err).Msg("Failed to get vulnerabilities from API")
 			} else if vulnerabilities != nil {
 				detection.CVEs = vulnerabilities.CVEs
+				if vulnerabilities.UpdateRecommendations != nil {
+					detection.UpdateRecommendations = &core.DetectionUpdateRecommendations{
+						WithoutVulnerabilities:         vulnerabilities.UpdateRecommendations.WithoutVulnerabilities,
+						WithoutCriticalVulnerabilities: vulnerabilities.UpdateRecommendations.WithoutCriticalVulnerabilities,
+					}
+				}
+
 				ui.RenderDetectionCVEs(execution, vulnerabilities, isApiKeyValid)
 			}
 		}

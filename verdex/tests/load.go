@@ -1,7 +1,7 @@
 package tests
 
 import (
-	"os"
+	"io/fs"
 	"path/filepath"
 	"strings"
 
@@ -11,8 +11,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func LoadTestCaseFromFile(filePath string) error {
-	testCase, err := parseTestCaseYaml(filePath)
+func LoadTestCaseFromFile(templatesFS fs.FS, filePath string) error {
+	testCase, err := parseTestCaseYaml(templatesFS, filePath)
 	if err != nil {
 		return err
 	}
@@ -26,10 +26,10 @@ func LoadTestCaseFromFile(filePath string) error {
 	return nil
 }
 
-func parseTestCaseYaml(yamlPath string) (*TestCase, error) {
+func parseTestCaseYaml(templatesFS fs.FS, yamlPath string) (*TestCase, error) {
 	testCase := TestCase{}
 
-	yamlContent, err := os.ReadFile(yamlPath)
+	yamlContent, err := fs.ReadFile(templatesFS, yamlPath)
 	if err != nil {
 		return nil, err
 	}

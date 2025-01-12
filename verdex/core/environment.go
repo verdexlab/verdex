@@ -12,6 +12,7 @@ const (
 	EnvironmentReleaseDocker    Environment = "release-docker"
 	EnvironmentReleaseGoInstall Environment = "release-go-install"
 	EnvironmentReleaseBinary    Environment = "release-binary"
+	EnvironmentReleaseWasmJS    Environment = "release-wasmjs"
 )
 
 // Will be overwritten by release pipeline, for example:
@@ -27,6 +28,11 @@ func GetEnvironment() Environment {
 	// Binary is built by release pipeline
 	if releaseEnvironment == string(EnvironmentReleaseBinary) {
 		return EnvironmentReleaseBinary
+	}
+
+	// Binary is built by release pipeline
+	if releaseEnvironment == string(EnvironmentReleaseWasmJS) {
+		return EnvironmentReleaseWasmJS
 	}
 
 	// Binary is executed with "go run"

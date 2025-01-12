@@ -18,13 +18,14 @@ type OutputJson struct {
 }
 
 type OutputResultJson struct {
-	StartedAt        string                    `json:"startedAt"`
-	EndedAt          string                    `json:"endedAt"`
-	Target           string                    `json:"target"`
-	Product          string                    `json:"product"`
-	Success          bool                      `json:"success"`
-	PossibleVersions []OutputResultVersionJson `json:"possibleVersions"`
-	CVEs             []core.CVE                `json:"cves"`
+	StartedAt             string                               `json:"startedAt"`
+	EndedAt               string                               `json:"endedAt"`
+	Target                string                               `json:"target"`
+	Product               string                               `json:"product"`
+	Success               bool                                 `json:"success"`
+	PossibleVersions      []OutputResultVersionJson            `json:"possibleVersions"`
+	CVEs                  []core.CVE                           `json:"cves"`
+	UpdateRecommendations *core.DetectionUpdateRecommendations `json:"update_recommendations,omitempty"`
 }
 
 type OutputResultVersionJson struct {
@@ -47,13 +48,14 @@ func exportResultsJson(execution *core.Execution, path string) error {
 
 	for _, detection := range execution.Detections {
 		resultOutput := OutputResultJson{
-			StartedAt:        detection.StartedAt.Format(time.RFC3339),
-			EndedAt:          detection.EndedAt.Format(time.RFC3339),
-			Target:           detection.Target,
-			Product:          detection.Product,
-			Success:          detection.Success,
-			PossibleVersions: []OutputResultVersionJson{},
-			CVEs:             detection.CVEs,
+			StartedAt:             detection.StartedAt.Format(time.RFC3339),
+			EndedAt:               detection.EndedAt.Format(time.RFC3339),
+			Target:                detection.Target,
+			Product:               detection.Product,
+			Success:               detection.Success,
+			PossibleVersions:      []OutputResultVersionJson{},
+			CVEs:                  detection.CVEs,
+			UpdateRecommendations: detection.UpdateRecommendations,
 		}
 
 		if detection.Success {
@@ -76,10 +78,14 @@ func exportResultsJson(execution *core.Execution, path string) error {
 		return err
 	}
 
-	err = os.WriteFile(path, jsonString, os.ModePerm)
-	if err != nil {
-		log.Debug().Err(err).Msg("Failed to write results to json file")
-		return err
+	if core.GetEnvironment() == core.EnvironmentReleaseWasmJS {
+		fmt.Println("wasm:js:output", string(jsonString))
+	} else {
+		err = os.WriteFile(path, jsonString, os.ModePerm)
+		if err != nil {
+			log.Debug().Err(err).Msg("Failed to write results to json file")
+			return err
+		}
 	}
 
 	return nil

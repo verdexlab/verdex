@@ -1,7 +1,7 @@
 package variables
 
 import (
-	"os"
+	"io/fs"
 	"path/filepath"
 	"strings"
 
@@ -10,8 +10,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-func LoadVariableFromFile(filePath string) error {
-	variable, err := parseVariableYaml(filePath)
+func LoadVariableFromFile(templatesFS fs.FS, filePath string) error {
+	variable, err := parseVariableYaml(templatesFS, filePath)
 	if err != nil {
 		return err
 	}
@@ -28,10 +28,10 @@ func LoadVariableFromFile(filePath string) error {
 	return nil
 }
 
-func parseVariableYaml(yamlPath string) (*Variable, error) {
+func parseVariableYaml(templatesFS fs.FS, yamlPath string) (*Variable, error) {
 	variable := Variable{}
 
-	yamlContent, err := os.ReadFile(yamlPath)
+	yamlContent, err := fs.ReadFile(templatesFS, yamlPath)
 	if err != nil {
 		return nil, err
 	}

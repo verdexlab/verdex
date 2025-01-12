@@ -27,6 +27,8 @@ func DetectVersion(execution *core.Execution, detection *core.Detection) (v []*s
 	matchingConstraints := make([]*semver.Constraints, 0)
 	excludedConstraints := make([]*semver.Constraints, 0)
 
+	log.Debug().Str("product", product.ID).Int("rules", len(rules)).Msgf("Loaded rules for product")
+
 	// Reload versions list
 	err = product.Versions.ReloadList(&execution.Config, detection.Product)
 	if err != nil {
@@ -51,7 +53,7 @@ func DetectVersion(execution *core.Execution, detection *core.Detection) (v []*s
 
 			if !execution.Config.Test {
 				if execution.Config.Verbose {
-					log.Info().Msgf(" %s  %s", color.GreenString("✓"), rule.Version)
+					log.Info().Msgf(" %s  Matching version: %s", color.GreenString("✓"), rule.Version)
 				} else {
 					vertex.RenderMatchingLine(rule.Constraint)
 				}
@@ -60,7 +62,7 @@ func DetectVersion(execution *core.Execution, detection *core.Detection) (v []*s
 			excludedConstraints = append(excludedConstraints, rule.Constraint)
 
 			if !execution.Config.Test && execution.Config.Verbose {
-				log.Info().Msgf(" %s  %s", color.RedString("✗"), rule.Version)
+				log.Info().Msgf(" %s  Excluded version: %s", color.RedString("✗"), rule.Version)
 			}
 		}
 	}

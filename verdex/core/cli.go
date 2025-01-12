@@ -8,6 +8,7 @@ import (
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	templates_fs "github.com/verdexlab/verdex/templates"
 )
 
 // Parse CLI arguments
@@ -112,6 +113,8 @@ func ParseFlags() *Execution {
 	} else {
 		execution.Config.TemplatesSource = TemplatesSourceLocalDirectory
 	}
+
+	execution.Config.TemplatesFS = templates_fs.GetTemplatesFs(execution.Config.TemplatesDirectory)
 
 	// Test session
 	if execution.Config.TestSession && execution.Config.TestVersion == "" {
