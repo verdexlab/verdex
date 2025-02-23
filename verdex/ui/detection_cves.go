@@ -21,7 +21,7 @@ func RenderDetectionCVEs(execution *core.Execution, data *api.CVEsData, isApiKey
 
 	log.Info().Msgf(color.New(color.BgRed, color.FgWhite).Sprint(" ✗ ")+" Target is %s, %s on detected version", color.New(color.Bold, color.FgRed).Sprint("vulnerable"), color.New(color.Bold).Sprintf("%d CVE found", data.Total))
 	if !isApiKeyValid {
-		log.Info().Msg("Use valid API key (-key) to list vulnerabilities and get update recommendations, see https://verdex-docs.mintlify.app/expert/vulnerabilities")
+		log.Info().Msg("Use valid API key (-key) to list vulnerabilities and get update recommendations, see https://docs.verdexlab.io/expert/vulnerabilities")
 		return
 	}
 

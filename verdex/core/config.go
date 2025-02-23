@@ -15,7 +15,6 @@ type Config struct {
 	TemplatesFS           fs.FS
 	TemplatesRelease      string
 	Verbose               bool
-	ReportTargets         bool
 	Test                  bool
 	TestVersion           string
 	TestSession           bool
@@ -31,7 +30,7 @@ const (
 var userHomeDir, _ = os.UserHomeDir()
 
 // CLI version
-var cliVersion = "0.0.1"
+var cliVersion = "0.1.0"
 
 // Templates
 var TemplatesDefaultDirectory = path.Join(userHomeDir, "verdex-templates")

@@ -40,7 +40,6 @@ func ParseFlags() *Execution {
 	flag.BoolVar(&showVersion, "version", false, "show verdex version")
 	flag.StringVar(&execution.Config.TemplatesDirectory, "templates-directory", "", "path to templates directory to use instead of official repository")
 	flag.BoolVar(&execution.Config.Verbose, "verbose", false, "show verbose output")
-	flag.BoolVar(&execution.Config.ReportTargets, "report-errors", false, "report failed target to improve detections")
 
 	// Testing
 	if GetEnvironment() == EnvironmentDevelopment {

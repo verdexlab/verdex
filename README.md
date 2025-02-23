@@ -7,18 +7,18 @@ Verdex also **determines the accurate vulnerabilities** associated with the dete
 
 🔧 Instead of relying on exposed headers, Verdex quickly analyzes the features present on a service. 
 For example, **if a feature was introduced in a specific version, Verdex uses this information to deduce the 
-minimum version of the service** (see [How It Works](https://verdex-docs.mintlify.app/how-it-works) for more information).
+minimum version of the service** (see [How It Works](https://docs.verdexlab.io/how-it-works) for more information).
 
 🪶 Verdex relies solely on **non-aggressive methods**, in particular by using mostly static assets (javascript, css and html files).
 
-🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](https://verdex-docs.mintlify.app/essentials/products) documentation).
+🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](https://docs.verdexlab.io/essentials/products) documentation).
 
-🌪️ Verdex has a Standard mode and an Expert mode with more advanced features, such as [vulnerabilities listing](https://verdex-docs.mintlify.app/expert/vulnerabilities).
+🌪️ Verdex has a Standard mode and an Expert mode with more advanced features, such as [vulnerabilities listing](https://docs.verdexlab.io/expert/vulnerabilities).
 
 ⚠️ Any unauthorized use of Verdex to analyze or exploit online services is strictly prohibited and violates both our license agreement and applicable laws. **Verdex must be used with explicit authorization from the owner or administrator of the targets being scanned**.
 
 ## 📖 Documentation
-The entire tool documentation is available at [https://verdex-docs.mintlify.app](https://verdex-docs.mintlify.app)
+The entire tool documentation is available at [https://docs.verdexlab.io](https://docs.verdexlab.io)
 
 ## 🚀 Install Verdex
 
@@ -34,7 +34,7 @@ source ~/.bashrc
 ```
 
 > 📖 Read documentation for more installation options: 
-[https://verdex-docs.mintlify.app/quickstart](https://verdex-docs.mintlify.app/quickstart)
+[https://docs.verdexlab.io/quickstart](https://docs.verdexlab.io/quickstart)
 
 ## 🌪️ Run version detection
 
@@ -43,7 +43,7 @@ verdex -target https://keycloak.example.com -output-json ./results.json
 ```
 
 > 📖 Read documentation for more detection options: 
-[https://verdex-docs.mintlify.app/essentials/options](https://verdex-docs.mintlify.app/essentials/options)
+[https://docs.verdexlab.io/essentials/options](https://docs.verdexlab.io/essentials/options)
 
 ## License
 Verdex is distributed under MIT License.

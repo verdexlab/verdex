@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-var proxyHost = "proxy.verdexlab.workers.dev"
+var proxyHost = "proxy.verdexlab.io"
 
 // Proxy for wasm:js targets
 func proxifyRequest(request *http.Request) {

@@ -56,22 +56,6 @@ verdex -target https://example.com -verbose
 ```
 </ParamField>
 
-## Improvement Reports
-
-Sometimes, Verdex cannot determine version for multiple reasons (missing or incorrect rules, specific configuration, ...).
-Use `-report-errors` to automatically report failures to Verdex maintainers for manual debugging.
-By default, targets are not reported.
-
-<Note>
-  URLs of reported targets will NOT be publicly visible and will be accessed by Verdex maintainers for debugging purposes only.
-</Note>
-
-<ParamField path="-report-errors" type="boolean" default={false}>
-```bash
-verdex -target https://example.com -report-errors
-```
-</ParamField>
-
 ## Custom templates
 
 Verdex uses templates to run scans (see [Contribute section](/contribute) for more information).

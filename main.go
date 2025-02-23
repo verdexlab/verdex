@@ -1,7 +1,6 @@
 package main
 
 import (
-	"slices"
 	"time"
 
 	"github.com/rs/zerolog/log"
@@ -67,24 +66,6 @@ func main() {
 		detection.PossibleVersions = versions
 
 		ui.RenderDetectionResults(detection, err)
-
-		if !detection.Success && detection.Product != "" {
-			cache := core.GetCache(&execution.Config)
-			if slices.Contains(cache.ReportedTargets, detection.Target) {
-				log.Debug().Msg("Target already reported")
-			} else if execution.Config.ReportTargets {
-				err = core.ReportTarget(detection)
-				if err != nil {
-					log.Error().Err(err).Msg("Failed to report target")
-				} else {
-					cache.ReportedTargets = append(cache.ReportedTargets, detection.Target)
-					cache.Save()
-					log.Info().Msg("Target reported, thank you for improving Verdex")
-				}
-			} else {
-				log.Info().Msg("Feel free to report it (using -report-errors), we'll investigate to improve detection (target will NOT be publicly visible)")
-			}
-		}
 
 		if detection.Success {
 			versionsStr := make([]string, 0)

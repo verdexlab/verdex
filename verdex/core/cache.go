@@ -11,10 +11,9 @@ import (
 var cacheFileName = ".cache"
 
 type Cache struct {
-	Config          *Config                  `yaml:"-"`
-	Releases        CacheReleases            `yaml:"releases"`
-	ReportedTargets []string                 `yaml:"reported-targets"`
-	Products        map[string]*CacheProduct `yaml:"products"`
+	Config   *Config                  `yaml:"-"`
+	Releases CacheReleases            `yaml:"releases"`
+	Products map[string]*CacheProduct `yaml:"products"`
 }
 
 type CacheReleases struct {
@@ -101,8 +100,7 @@ func newCache(config *Config) {
 			Cli:       CacheReleasesCli{},
 			Templates: CacheReleasesTemplates{},
 		},
-		ReportedTargets: []string{},
-		Products:        map[string]*CacheProduct{},
+		Products: map[string]*CacheProduct{},
 	}
 
 	cache = &newCache
