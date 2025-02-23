@@ -17,6 +17,13 @@ minimum version of the service** (see [How It Works](https://docs.verdexlab.io/h
 
 ⚠️ Any unauthorized use of Verdex to analyze or exploit online services is strictly prohibited and violates both our license agreement and applicable laws. **Verdex must be used with explicit authorization from the owner or administrator of the targets being scanned**.
 
+## ⚡ Browser version
+
+**An online version of Verdex is available at 
+https://verdexlab.io**
+
+This version is still in beta, don't hesitate to let us know if you encounter any problems!
+
 ## 📖 Documentation
 The entire tool documentation is available at [https://docs.verdexlab.io](https://docs.verdexlab.io)
 
