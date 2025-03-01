@@ -1,0 +1,11 @@
+info:
+  product: rocketchat
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/api/v1/channels.anonymousread'
+  part: body
+  regex: '(error-room-not-found)'
+  group: 1

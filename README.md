@@ -11,7 +11,7 @@ minimum version of the service** (see [How It Works](https://docs.verdexlab.io/h
 
 🪶 Verdex relies solely on **non-aggressive methods**, in particular by using mostly static assets (javascript, css and html files).
 
-🎯 Currently, Verdex supports detecting versions of **Keycloak** and **NextCloud** (see [Products](https://docs.verdexlab.io/essentials/products) documentation).
+🎯 Currently, Verdex supports detecting versions of **Keycloak**, **NextCloud** and **Rocket.Chat** (see [Products](https://docs.verdexlab.io/essentials/products) documentation).
 
 🌪️ Verdex has a Standard mode and an Expert mode with more advanced features, such as [vulnerabilities listing](https://docs.verdexlab.io/expert/vulnerabilities).
 

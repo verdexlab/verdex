@@ -1,0 +1,19 @@
+name: Rocket.Chat
+description: Rocket.Chat is an open-source fully customizable communications platform developed in JavaScript for organizations with high standards of data protection.
+website: https://www.rocket.chat/
+
+versions:
+  source: github
+  organization: RocketChat
+  repository: Rocket.Chat
+
+cpe:
+  vendor: rocket.chat
+  product: rocket.chat
+  type: a
+
+smoke-tests:
+  product:
+    - detectRocketChat
+  version:
+    - infoVersion

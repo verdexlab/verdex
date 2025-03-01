@@ -1,0 +1,11 @@
+info:
+  product: rocketchat
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/api/info'
+  part: body
+  regex: '"version":"([0-9\.]+)"'
+  group: 1
