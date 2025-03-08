@@ -1,0 +1,19 @@
+name: Mastodon
+description: Mastodon is a free, open-source social network server based on ActivityPub where users can follow friends and discover new ones.
+website: https://joinmastodon.org
+
+versions:
+  source: github
+  organization: mastodon
+  repository: mastodon
+
+cpe:
+  vendor: joinmastodon
+  product: mastodon
+  type: a
+
+smoke-tests:
+  product:
+    - detectMastodon
+  version:
+    - infoVersion

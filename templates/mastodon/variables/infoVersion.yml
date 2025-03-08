@@ -1,0 +1,11 @@
+info:
+  product: mastodon
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/'
+  part: body
+  regex: '"version":"([0-9a-z\.-]+)"'
+  group: 1

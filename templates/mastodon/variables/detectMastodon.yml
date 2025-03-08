@@ -1,0 +1,11 @@
+info:
+  product: mastodon
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/'
+  part: body
+  regex: "(id='mastodon')"
+  group: 1
