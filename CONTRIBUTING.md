@@ -14,6 +14,10 @@ go run . -test -product keycloak
 # single version:
 go run . -test -product keycloak -test-version 26.0.5
 
+# versions range:
+go run . -test -product keycloak -test-version "26.*"
+go run . -test -product keycloak -test-version ">= 26.0.1 < 26.0.5"
+
 # with real target:
 go run . -target https://target.fr -product keycloak
 ```

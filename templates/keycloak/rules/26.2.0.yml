@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 26.2.0'
+
+http:
+  # js/apps/account-ui/maven-resources/theme/keycloak.v3/account/messages/messages_en.properties
+  - method: GET
+    path: '/resources/master/account/en'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/26.1.5...26.2.0#diff-f8cdef1dece253e24f7d47897599c455d45793f8495ccd880d416b396af90fd7
+      - type: word
+        part: body
+        word: '{"key":"recovery-codes-number-used","value":"{{0}} recovery codes used"}'
+
+      - type: status
+        status: 200

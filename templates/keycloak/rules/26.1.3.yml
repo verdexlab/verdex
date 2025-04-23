@@ -2,7 +2,7 @@ info:
   product: keycloak
   author: pierreavn
 
-version: '>= 25.0.2 < 26.2.0'
+version: '>= 26.1.3'
 
 http:
   # js/apps/admin-ui/maven-resources/theme/keycloak.v2/admin/messages/messages_en.properties
@@ -11,10 +11,10 @@ http:
 
     matchers-condition: and
     matchers:
-      # https://github.com/keycloak/keycloak/compare/25.0.1...25.0.2#diff-c9ef637a710ad2a1ec0f86584796ce5fff7fa0c7a8702bcd020b29eef4e5af43
+      # https://github.com/keycloak/keycloak/compare/26.1.2...26.1.3#diff-c9ef637a710ad2a1ec0f86584796ce5fff7fa0c7a8702bcd020b29eef4e5af43
       - type: word
         part: body
-        word: '{"key":"emailVerificationHelp","value":"Specifies independent timeout for email verification."}'
+        word: 'In addition, you are also able to create or edit the \"{{fieldName}}\" translations in the <1>Realm settings > Localization > Realm overrides.</1>'
 
       - type: status
         status: 200

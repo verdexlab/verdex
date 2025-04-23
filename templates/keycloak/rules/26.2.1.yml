@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 26.2.1'
+
+http:
+  # js/apps/admin-ui/src/components/client/ClientSelect.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/{{reactMainName}}-{{reactAdminMainId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/26.2.0...26.2.1#diff-e5874ea317578325c52c1dbc5fc909689279e5cf887a9f7ce00ad5eef69c9a68
+      - type: word
+        part: body
+        word: '{id:e,name:t,label:n,options:a,selectedOptions:r=[],controller:i,labelIcon:s,placeholderText:o,onFilter:c,variant:d,...u}'
+
+      - type: status
+        status: 200

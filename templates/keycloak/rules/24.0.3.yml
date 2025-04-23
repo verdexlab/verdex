@@ -2,7 +2,7 @@ info:
   product: keycloak
   author: pierreavn
 
-version: '>= 24.0.3'
+version: '>= 24.0.3 < 26.1.0'
 
 http:
   # js/apps/account-ui/src/account-security/SigningIn.tsx

@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 26.1.1 < 26.2.0'
+
+http:
+  # js/apps/admin-ui/src/index.ts
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/{{reactMainName}}-{{reactAdminMainId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/26.1.0...26.1.1#diff-98058e9323adb8741bc0a83a7992087482855babc00b9cf1eb1d20559cc68039
+      - type: word
+        part: body
+        word: '()=>i.sort((y,x)=>y.name===e?-1:x.name===e?1:c.includes(y.name)?-1'
+
+      - type: status
+        status: 200

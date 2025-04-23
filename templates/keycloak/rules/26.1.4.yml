@@ -1,0 +1,20 @@
+info:
+  product: keycloak
+  author: pierreavn
+
+version: '>= 26.1.4'
+
+http:
+  # js/apps/admin-ui/src/events/UserEvents.tsx
+  - method: GET
+    path: '/resources/{{resourcesId}}/admin/keycloak.v2/assets/UserEvents-{{reactAdminUserEventsId}}.js'
+
+    matchers-condition: and
+    matchers:
+      # https://github.com/keycloak/keycloak/compare/26.1.3...26.1.4#diff-627c4a97634fa56dc1f34ecd82190c6bb9e2037e5d7d97a1eb5a4f7e280d391e
+      - type: word
+        part: body
+        word: ',instructions:r("emptyUserEventsInstructions"),primaryActionText:r("refresh"),'
+
+      - type: status
+        status: 200
