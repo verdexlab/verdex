@@ -16,7 +16,7 @@ type Detection struct {
 	Success               bool
 	PossibleVersions      []*semver.Version
 	Vulnerable            bool
-	CVEs                  []CVE
+	CVEs                  []*CVE
 	UpdateRecommendations *DetectionUpdateRecommendations `json:"update_recommendations,omitempty"`
 }
 

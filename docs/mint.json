@@ -4,12 +4,12 @@
   "logo": "/logo.svg",
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#00b7fa",
+    "light": "#01cfea",
+    "dark": "#00b7fa",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#00b7fa",
+      "to": "#01cfea"
     }
   },
   "topbarLinks": [
@@ -23,6 +23,11 @@
     "url": "https://github.com/verdexlab/verdex"
   },
   "anchors": [
+    {
+      "name": "Verdex online",
+      "icon": "tornado",
+      "url": "https://verdexlab.io"
+    },
     {
       "name": "GitHub repository",
       "icon": "github",
@@ -43,14 +48,8 @@
       "pages": [
         "essentials/products",
         "essentials/options",
+        "essentials/vulnerabilities",
         "essentials/output"
-      ]
-    },
-    {
-      "group": "Expert - Go further",
-      "pages": [
-        "expert/vulnerabilities",
-        "expert/become-expert"
       ]
     },
     {

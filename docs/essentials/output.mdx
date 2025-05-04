@@ -51,6 +51,19 @@ JSON output always have the same structure:
           "version": "25.0.6",
           "cpe": "cpe:2.3:a:redhat:keycloak:25.0.6:*:*:*:*:*:*:*"
         }
+      ],
+
+      // list of vulnerabilities associated to possible versions
+      "cves": [
+        {
+          "id": "CVE-2022-4361",
+          "description": "Keycloak, an open-source identity and access management solution, has a cross-site scripting (XSS) vulnerability in the SAML or OIDC providers. The vulnerability can allow an attacker to execute malicious scripts by setting the AssertionConsumerServiceURL value or the redirect_uri.",
+          "cvss_score": 10,
+          "epss_score": 0.00311,
+          "is_kev": false,
+          "vulnerable_versions": ["21.0.2"],
+          "published_at": "2023-07-07"
+        }
       ]
     }
   ]

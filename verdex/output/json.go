@@ -24,7 +24,7 @@ type OutputResultJson struct {
 	Product               string                               `json:"product"`
 	Success               bool                                 `json:"success"`
 	PossibleVersions      []OutputResultVersionJson            `json:"possibleVersions"`
-	CVEs                  []core.CVE                           `json:"cves"`
+	CVEs                  []*core.CVE                          `json:"cves"`
 	UpdateRecommendations *core.DetectionUpdateRecommendations `json:"update_recommendations,omitempty"`
 }
 

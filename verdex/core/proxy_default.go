@@ -1,10 +1,10 @@
 //go:build !js
 // +build !js
 
-package assets
+package core
 
 import "net/http"
 
-func proxifyRequest(request *http.Request) {
+func ProxifyRequest(request *http.Request) {
 	// no proxy by default
 }

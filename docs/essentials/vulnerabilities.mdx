@@ -1,0 +1,50 @@
+---
+title: 'Vulnerabilities'
+description: 'Discover how to obtain the list of vulnerabilities.'
+icon: 'light-emergency-on'
+iconType: 'duotone'
+---
+
+We are aware of the difficulty of obtaining a precise list of vulnerabilities actually applicable to a specific version.
+
+The main objective behind Verdex is to **quickly identify the vulnerabilities associated with the detected version**.
+
+The list of vulnerabilities is **automatically displayed at the end of a successful scan**, as well as **in the output files**.
+
+<Note>
+    To provide accurate vulnerabilities, Verdex relies on search-vulns.com CVE data and first.org EPSS data.
+</Note>
+
+_👉&nbsp;&nbsp;Click on the screenshot below to enlarge_
+<Frame>
+  <img src="/images/vulnerabilities.png" />
+</Frame>
+
+More CVE data are available in output files (see below).
+
+
+## Available CVE data
+
+Here are CVE data available in Verdex output files:
+- **CVE ID** (`CVE-YYYY-XXXX`)
+- **Description**
+- **CVSS score** preferably v3.1 if available
+- **EPSS score** from [first.org API](https://www.first.org/epss/api)
+- **Vulnerable versions**
+- **Is it a Known Exploited Vulnerability (KEV)**
+- **Publication date**
+
+Here is data example for `CVE-2022-4361` on Keycloak:
+```json
+{
+    "id": "CVE-2022-4361",
+    "description": "Keycloak, an open-source identity and access management solution, has a cross-site scripting (XSS) vulnerability in the SAML or OIDC providers. The vulnerability can allow an attacker to execute malicious scripts by setting the AssertionConsumerServiceURL value or the redirect_uri.",
+    "cvss_score": 10,
+    "epss_score": 0.00311,
+    "is_kev": false,
+    "vulnerable_versions": [
+        "21.0.2"
+    ],
+    "published_at": "2023-07-07"
+},
+```

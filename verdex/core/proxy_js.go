@@ -1,7 +1,7 @@
 //go:build js
 // +build js
 
-package assets
+package core
 
 import (
 	"net/http"
@@ -10,7 +10,7 @@ import (
 var proxyHost = "proxy.verdexlab.io"
 
 // Proxy for wasm:js targets
-func proxifyRequest(request *http.Request) {
+func ProxifyRequest(request *http.Request) {
 	request.URL.Path = request.URL.Host + request.URL.Path
 	request.URL.Host = proxyHost
 }

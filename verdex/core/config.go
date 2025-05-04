@@ -7,7 +7,6 @@ import (
 )
 
 type Config struct {
-	ApiKey                string
 	TemplatesSource       TemplatesSource
 	TemplatesOrganization string
 	TemplatesRepository   string
@@ -30,7 +29,7 @@ const (
 var userHomeDir, _ = os.UserHomeDir()
 
 // CLI version
-var cliVersion = "0.1.0"
+var cliVersion = "1.0.0"
 
 // Templates
 var TemplatesDefaultDirectory = path.Join(userHomeDir, "verdex-templates")

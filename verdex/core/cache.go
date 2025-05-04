@@ -23,6 +23,7 @@ type CacheReleases struct {
 
 type CacheReleasesCli struct {
 	Latest      string `yaml:"latest"`
+	Current     string `yaml:"current"`
 	RefreshedAt int64  `yaml:"refreshed-at"`
 }
 
@@ -64,6 +65,12 @@ func GetCache(config *Config) *Cache {
 		return cache
 	}
 
+	if cache.Releases.Cli.Current != GetVerdexVersion() {
+		log.Debug().Err(err).Str("path", cacheFilePath).Msg("Regenerated cache due to new CLI version")
+		newCache(config)
+		return cache
+	}
+
 	cache.Config = config
 	log.Debug().Err(err).Str("path", cacheFilePath).Msg("Loaded cache content successfully")
 	return cache
@@ -97,7 +104,9 @@ func newCache(config *Config) {
 	newCache := Cache{
 		Config: config,
 		Releases: CacheReleases{
-			Cli:       CacheReleasesCli{},
+			Cli: CacheReleasesCli{
+				Current: GetVerdexVersion(),
+			},
 			Templates: CacheReleasesTemplates{},
 		},
 		Products: map[string]*CacheProduct{},

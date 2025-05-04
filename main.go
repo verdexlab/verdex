@@ -1,10 +1,10 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/rs/zerolog/log"
-	"github.com/verdexlab/verdex/verdex/api"
 	"github.com/verdexlab/verdex/verdex/core"
 	"github.com/verdexlab/verdex/verdex/detect"
 	"github.com/verdexlab/verdex/verdex/output"
@@ -68,24 +68,13 @@ func main() {
 		ui.RenderDetectionResults(detection, err)
 
 		if detection.Success {
-			versionsStr := make([]string, 0)
-			for _, version := range versions {
-				versionsStr = append(versionsStr, version.String())
-			}
-
-			vulnerabilities, isApiKeyValid, err := api.GetCVEsFromVersions(detection.Product, versionsStr, execution.Config.ApiKey)
+			fmt.Println("")
+			cves, err := detect.DetectCVEs(execution, detection)
 			if err != nil {
-				log.Error().Err(err).Msg("Failed to get vulnerabilities from API")
-			} else if vulnerabilities != nil {
-				detection.CVEs = vulnerabilities.CVEs
-				if vulnerabilities.UpdateRecommendations != nil {
-					detection.UpdateRecommendations = &core.DetectionUpdateRecommendations{
-						WithoutVulnerabilities:         vulnerabilities.UpdateRecommendations.WithoutVulnerabilities,
-						WithoutCriticalVulnerabilities: vulnerabilities.UpdateRecommendations.WithoutCriticalVulnerabilities,
-					}
-				}
-
-				ui.RenderDetectionCVEs(execution, vulnerabilities, isApiKeyValid)
+				log.Warn().Err(err).Msg("Failed to determine if target is vulnerable")
+			} else {
+				detection.CVEs = cves
+				ui.RenderDetectionCVEs(execution, cves)
 			}
 		}
 	}

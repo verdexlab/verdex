@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="3 3.8092 84.8162 16.1908">
-  <path d="M21 4l-18 0" stroke="#A7D7A1" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
-  <path d="M6 8l14 0" stroke="#94CF8D" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
-  <path d="M4 12l12 0" stroke="#82C679" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
-  <path d="M13 16l-6 0" stroke="#70BD65" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
-  <path d="M11 20l4 0" stroke="#52B045" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
-  <text style="fill: rgb(130, 198, 121); font-family: Tahoma; font-size: 19.784199px; font-weight: 500;" transform="matrix(0.7044210433959961, 0, 0, 0.6570900678634644, 33.86198043823242, 3.696272850036614)" x="-3.62" y="19.38">verdex</text>
+  <path d="M21 4l-18 0" stroke="#01cfea" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
+  <path d="M6 8l14 0" stroke="#01cfea" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
+  <path d="M4 12l12 0" stroke="#00b7fa" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
+  <path d="M13 16l-6 0" stroke="#00b7fa" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
+  <path d="M11 20l4 0" stroke="#00b7fa" transform="matrix(1, 0, 0, 1, 0, -7.105427357601002e-15)"/>
+  <text style="fill: #00b7fa; font-family: Tahoma; font-size: 19.784199px; font-weight: 500;" transform="matrix(0.7044210433959961, 0, 0, 0.6570900678634644, 33.86198043823242, 3.696272850036614)" x="-3.62" y="19.38">verdex</text>
 </svg>

@@ -49,7 +49,7 @@ func FetchAsset(execution *core.Execution, detection *core.Detection, method str
 
 	request.Header.Set("User-Agent", userAgent)
 
-	proxifyRequest(request)
+	core.ProxifyRequest(request)
 
 	res, err := client.Do(request)
 	if err != nil {

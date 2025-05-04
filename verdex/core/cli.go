@@ -36,7 +36,6 @@ func ParseFlags() *Execution {
 	flag.StringVar(&execution.OutputJsonPath, "output-json", "", "file path to output results in JSON format")
 
 	// Misc
-	flag.StringVar(&execution.Config.ApiKey, "key", "", "provide Verdex API key")
 	flag.BoolVar(&showVersion, "version", false, "show verdex version")
 	flag.StringVar(&execution.Config.TemplatesDirectory, "templates-directory", "", "path to templates directory to use instead of official repository")
 	flag.BoolVar(&execution.Config.Verbose, "verbose", false, "show verbose output")
