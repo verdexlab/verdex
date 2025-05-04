@@ -31,3 +31,12 @@ Thank you for your contribution!
 
 ## Documentation
 Use [Mintlify local development guide](https://mintlify.com/docs/development) to improve documentation in `/docs`.
+
+## Releases
+- To create a new CLI release:
+    - Create a GitHub tag named `v<cli-version>`
+    - Run on this tag the `Build and release binary` GitHub action
+    - Once completed, run on the same tag the `Build and release Docker` GitHub action
+- To create a new Templates release, create a GitHub tag and release named `templates-<templates-version>`
+
+Note that CLI version and Templates version are different.
