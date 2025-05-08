@@ -11,7 +11,7 @@ minimum version of the service** (see [How It Works](https://docs.verdexlab.io/h
 
 🪶 Verdex relies solely on **non-aggressive methods**, in particular by using mostly static assets (javascript, css and html files).
 
-🎯 Currently, Verdex supports detecting versions of **Keycloak**, **NextCloud**, **Rocket.Chat** and **Mastodon** (see [Products](https://docs.verdexlab.io/essentials/products) documentation).
+🎯 Currently, Verdex supports detecting versions of **Keycloak**, **NextCloud**, **Grafana**, **Rocket.Chat** and **Mastodon** (see [Products](https://docs.verdexlab.io/essentials/products) documentation).
 
 ⚠️ Any unauthorized use of Verdex to analyze or exploit online services is strictly prohibited and violates both our license agreement and applicable laws. **Verdex must be used with explicit authorization from the owner or administrator of the targets being scanned**.
 

@@ -1,0 +1,11 @@
+info:
+  product: grafana
+  author: pierreavn
+
+resolve:
+  type: regex
+  method: GET
+  path: '/'
+  part: body
+  regex: '"subTitle":"Grafana v([0-9\.]+) '
+  group: 1

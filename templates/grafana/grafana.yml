@@ -1,0 +1,19 @@
+name: Grafana
+description: Grafana is a multi-platform open source analytics and interactive visualization web application.
+website: https://grafana.com/
+
+versions:
+  source: github
+  organization: grafana
+  repository: grafana
+
+cpe:
+  vendor: grafana
+  product: grafana
+  type: a
+
+smoke-tests:
+  product:
+    - detectGrafana
+  version:
+    - infoVersion
